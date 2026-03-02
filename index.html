@@ -1,0 +1,2346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكترونيكس ستور | متجرك الموثوق للإلكترونيات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
+
+        :root {
+            --primary: #4F46E5;
+            --primary-dark: #4338CA;
+            --primary-light: #6366F1;
+            --accent: #8B5CF6;
+            --accent-light: #A78BFA;
+            --success: #10B981;
+            --success-light: #34D399;
+            --warning: #F59E0B;
+            --warning-light: #FBBF24;
+            --danger: #EF4444;
+            --danger-light: #F87171;
+            --bg-primary: #FAFAF9;
+            --bg-secondary: #FFFFFF;
+            --bg-tertiary: #F5F5F4;
+            --text-primary: #1C1917;
+            --text-secondary: #57534E;
+            --text-tertiary: #78716C;
+            --text-inverse: #FFFFFF;
+            --border-light: #E7E5E4;
+            --border-medium: #D6D3D1;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Gradient Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(79, 70, 229, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(5%, 5%) rotate(120deg); }
+            66% { transform: translate(-5%, 5%) rotate(240deg); }
+        }
+
+        /* Floating Shapes */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.03) 2px, transparent 2px),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.03) 2px, transparent 2px);
+            background-size: 60px 60px, 80px 80px;
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(79, 70, 229, 0.1);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 20px rgba(79, 70, 229, 0.2));
+        }
+
+        .logo:hover {
+            transform: scale(1.05) translateY(-2px);
+            filter: drop-shadow(0 0 30px rgba(79, 70, 229, 0.4));
+        }
+
+        .logo i {
+            color: var(--warning);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 14px 50px 14px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--border-light);
+            border-radius: 16px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .search-bar:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1), 0 8px 24px rgba(79, 70, 229, 0.15);
+            background: var(--bg-secondary);
+            transform: translateY(-2px);
+        }
+
+        .search-bar::placeholder {
+            color: var(--text-tertiary);
+            transition: opacity 0.3s;
+        }
+
+        .search-bar:focus::placeholder {
+            opacity: 0.5;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+            pointer-events: none;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            position: relative;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-secondary);
+        }
+
+        .icon-btn:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--danger);
+            color: white;
+            font-size: 0.75rem;
+            padding: 3px 7px;
+            border-radius: 50%;
+            font-weight: bold;
+            animation: bounce 0.5s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Filter Tabs */
+        .filter-section {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid rgba(79, 70, 229, 0.1);
+            position: sticky;
+            top: 73px;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .filter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--border-light);
+            color: var(--text-secondary);
+            padding: 12px 28px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Cairo', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            border-radius: 50%;
+        }
+
+        .filter-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--text-inverse);
+            border-color: transparent;
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .filter-btn.active::before {
+            display: none;
+        }
+
+        /* Products Grid */
+        .products-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .product-card {
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.05s; }
+        .product-card:nth-child(2) { animation-delay: 0.1s; }
+        .product-card:nth-child(3) { animation-delay: 0.15s; }
+        .product-card:nth-child(4) { animation-delay: 0.2s; }
+        .product-card:nth-child(5) { animation-delay: 0.25s; }
+        .product-card:nth-child(6) { animation-delay: 0.3s; }
+        .product-card:nth-child(7) { animation-delay: 0.35s; }
+        .product-card:nth-child(8) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+
+        .product-card:hover::before,
+        .product-card:hover::after {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.12),
+                0 0 0 1px rgba(79, 70, 229, 0.1),
+                0 0 40px rgba(79, 70, 229, 0.15);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+
+        .product-badges {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            animation: badgePulse 2s ease-in-out infinite;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes badgePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .badge-new {
+            background: linear-gradient(135deg, var(--success) 0%, var(--success-light) 100%);
+            color: white;
+        }
+
+        .badge-sale {
+            background: linear-gradient(135deg, var(--danger) 0%, var(--danger-light) 100%);
+            color: white;
+            animation: badgePulse 1.5s ease-in-out infinite;
+        }
+
+        .product-image-wrapper {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(1);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.15) rotate(2deg);
+            filter: brightness(1.05);
+        }
+
+        .product-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .product-card:hover .product-image-wrapper::after {
+            opacity: 1;
+        }
+
+        .product-info {
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-category {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .product-rating {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .star {
+            color: var(--warning);
+            font-size: 0.9rem;
+        }
+
+        .star.empty {
+            color: var(--border-medium);
+        }
+
+        .product-price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 8px rgba(79, 70, 229, 0.3));
+            animation: priceGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes priceGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 8px rgba(79, 70, 229, 0.3));
+            }
+            50% {
+                filter: drop-shadow(0 0 16px rgba(79, 70, 229, 0.5));
+            }
+        }
+
+        .price-suffix {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            background: var(--bg-tertiary);
+            padding: 8px;
+            border-radius: 12px;
+        }
+
+        .qty-btn {
+            background: var(--primary);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .qty-input {
+            width: 50px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border: none;
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Cairo', sans-serif;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+        }
+
+        .add-to-cart-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .add-to-cart-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(79, 70, 229, 0.4);
+        }
+
+        .add-to-cart-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Floating Cart Button */
+        .floating-cart {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            padding: 18px 45px;
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 40px rgba(79, 70, 229, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: white;
+            backdrop-filter: blur(10px);
+            animation: floatBounce 3s ease-in-out infinite;
+        }
+
+        @keyframes floatBounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .floating-cart:hover {
+            transform: translateX(-50%) translateY(-8px) scale(1.05);
+            box-shadow: 
+                0 20px 50px rgba(79, 70, 229, 0.5),
+                0 0 60px rgba(79, 70, 229, 0.3);
+            animation: none;
+        }
+
+        .floating-cart::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .floating-cart-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .floating-cart-price {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        /* Cart Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(79, 70, 229, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            width: 90%;
+            max-width: 550px;
+            max-height: 90vh;
+            overflow-y: auto;
+            z-index: 2001;
+            box-shadow: 
+                0 25px 100px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+            animation: modalSlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes modalSlideUp {
+            to {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-primary);
+        }
+
+        .close-btn {
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+        }
+
+        .close-btn:hover {
+            color: var(--danger);
+            background: rgba(239, 68, 68, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            margin-bottom: 25px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .cart-item:hover {
+            background: var(--bg-primary);
+        }
+
+        .cart-item-image {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .cart-item-price {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .cart-item-remove {
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .cart-item-remove:hover {
+            transform: scale(1.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 14px 20px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .form-input:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            background: var(--bg-secondary);
+        }
+
+        .price-summary {
+            background: var(--bg-tertiary);
+            padding: 25px;
+            border-radius: 16px;
+            margin: 25px 0;
+            border: 1px solid var(--border-light);
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .price-row.discount {
+            color: var(--success);
+        }
+
+        .price-row.total {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            padding-top: 15px;
+            border-top: 1px solid var(--border-light);
+            margin-top: 15px;
+        }
+
+        .discount-badge {
+            background: var(--success);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .submit-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(79, 70, 229, 0.5);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Order Confirmation Modal */
+        .order-confirmation-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            animation: fadeIn 0.3s;
+        }
+
+        .order-confirmation-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 50px 40px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            z-index: 3001;
+            box-shadow: 0 25px 100px rgba(0, 0, 0, 0.3);
+            animation: confirmationSlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            text-align: center;
+        }
+
+        @keyframes confirmationSlideUp {
+            to {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .success-animation {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .success-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--success) 0%, var(--success-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: successPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.3);
+        }
+
+        @keyframes successPop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-checkmark {
+            font-size: 3.5rem;
+            color: white;
+            animation: checkmarkDraw 0.5s 0.3s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes checkmarkDraw {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .confirmation-title {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            animation: fadeInUp 0.6s 0.4s ease backwards;
+        }
+
+        .confirmation-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            animation: fadeInUp 0.6s 0.5s ease backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .order-summary-box {
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: right;
+            margin: 30px 0;
+            animation: fadeInUp 0.6s 0.6s ease backwards;
+        }
+
+        .order-summary-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .order-detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .order-detail-row.highlight {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            padding-top: 15px;
+            margin-top: 15px;
+            border-top: 2px solid var(--border-light);
+        }
+
+        .order-detail-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .order-detail-label i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .order-id-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            animation: fadeInUp 0.6s 0.7s ease backwards;
+        }
+
+        .order-id-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .order-id-value {
+            font-size: 1.3rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .confirmation-message {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--success);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            color: var(--text-secondary);
+            animation: fadeInUp 0.6s 0.8s ease backwards;
+        }
+
+        .confirmation-message i {
+            color: var(--success);
+            margin-left: 8px;
+        }
+
+        .confirmation-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            animation: fadeInUp 0.6s 0.9s ease backwards;
+        }
+
+        .confirmation-btn {
+            flex: 1;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .confirmation-btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+        }
+
+        .confirmation-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(79, 70, 229, 0.4);
+        }
+
+        .confirmation-btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-medium);
+        }
+
+        .confirmation-btn-secondary:hover {
+            background: var(--bg-primary);
+            border-color: var(--primary);
+        }
+
+        .order-items-list {
+            margin-top: 20px;
+        }
+
+        .order-item-mini {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .order-item-mini-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .order-item-mini-details {
+            flex: 1;
+            text-align: right;
+        }
+
+        .order-item-mini-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+
+        .order-item-mini-qty {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: var(--success);
+            color: white;
+            padding: 16px 28px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-xl);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideInRight 0.4s, slideOutRight 0.4s 2.6s;
+            font-weight: 600;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        /* Empty Cart */
+        .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .empty-cart-icon {
+            font-size: 5rem;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .empty-cart-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0f1729 100%);
+            color: white;
+            padding: 60px 5% 30px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--primary) 20%, 
+                var(--accent) 50%, 
+                var(--primary) 80%, 
+                transparent 100%
+            );
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section h3 i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo i {
+            background: linear-gradient(135deg, var(--warning), #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary);
+            transform: translateX(-5px);
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: rgba(79, 70, 229, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+        }
+
+        .social-btn.facebook:hover {
+            background: #1877F2;
+            border-color: #1877F2;
+        }
+
+        .social-btn.instagram:hover {
+            background: linear-gradient(135deg, #E1306C, #FD1D1D, #F77737);
+            border-color: transparent;
+        }
+
+        .social-btn.whatsapp:hover {
+            background: #25D366;
+            border-color: #25D366;
+        }
+
+        .social-btn.tiktok:hover {
+            background: #000000;
+            border-color: #000000;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .payment-icon {
+            width: 50px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+            
+            .search-container {
+                order: 3;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 15px;
+            }
+
+            .floating-cart {
+                bottom: 20px;
+                padding: 12px 25px;
+            }
+
+            .cart-modal {
+                padding: 25px;
+                width: 95%;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .order-confirmation-modal {
+                padding: 40px 25px;
+            }
+
+            .confirmation-actions {
+                flex-direction: column;
+            }
+
+            .confirmation-title {
+                font-size: 1.6rem;
+            }
+
+            footer {
+                padding: 40px 5% 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-tertiary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo" onclick="location.reload()">
+                <i class="fas fa-bolt"></i>
+                <span>الكترونيكس ستور</span>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-bar" placeholder="ابحث عن أي منتج..." onkeyup="filterProducts()">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+
+            <div class="header-icons">
+                <div class="icon-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Filter Tabs -->
+    <div class="filter-section">
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="setCategory('all', this)">All</button>
+            <button class="filter-btn" onclick="setCategory('Power Banks', this)">Power Banks</button>
+            <button class="filter-btn" onclick="setCategory('Light House', this)">Light House</button>
+            <button class="filter-btn" onclick="setCategory('flashlights', this)">flashlights</button>
+            <button class="filter-btn" onclick="setCategory('Body Care', this)">Body Care</button>
+            <button class="filter-btn" onclick="setCategory('Tools', this)">Tools</button>
+            <button class="filter-btn" onclick="setCategory('VGR Section', this)">VGR Section</button>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="section-header">
+            <h1 class="section-title">أحدث المنتجات</h1>
+            <p class="section-subtitle">اكتشف أفضل العروض والمنتجات الحصرية</p>
+        </div>
+        
+        <div class="product-grid" id="products-container">
+            <!-- Products will be injected here -->
+        </div>
+    </section>
+
+    <!-- Floating Cart Button -->
+    <div class="floating-cart" id="floating-cart" onclick="toggleCart()" style="display: none;">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="floating-cart-text">عرض السلة</span>
+        <span class="floating-cart-price" id="floating-total">0 ج.م</span>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal-overlay" id="modal-overlay" onclick="toggleCart()"></div>
+    <div class="cart-modal" id="cart-modal" style="display: none;">
+        <div class="modal-header">
+            <h2 class="modal-title">إتمام الطلب</h2>
+            <div class="close-btn" onclick="toggleCart()">×</div>
+        </div>
+
+        <div class="cart-items" id="cart-items-list">
+            <!-- Cart items will be injected here -->
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">الاسم الكامل *</label>
+            <input type="text" id="cName" class="form-input" placeholder="أدخل اسمك الكامل">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">رقم الموبايل *</label>
+            <input type="tel" id="cPhone" class="form-input" placeholder="01xxxxxxxxx">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">العنوان بالتفصيل *</label>
+            <input type="text" id="cAddress" class="form-input" placeholder="الشارع، المنطقة، المبنى...">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">المحافظة *</label>
+            <select id="cCity" class="form-select">
+                <option value="">اختر المحافظة</option>
+                <option value="القاهرة">القاهرة</option>
+                <option value="الجيزة">الجيزة</option>
+                <option value="الإسكندرية">الإسكندرية</option>
+                <option value="المحله">المحله</option>
+                <option value="البحيرة">البحيرة</option>
+                <option value="المنيا">المنيا</option>
+                <option value="بورسعيد">بورسعيد</option>
+                <option value="أخرى">محافظة أخرى</option>
+            </select>
+        </div>
+
+        <div class="price-summary">
+            <div class="price-row">
+                <span>الإجمالي</span>
+                <span id="subtotal">0 ج.م</span>
+            </div>
+            <div class="price-row discount" id="discount-row" style="display: none;">
+                <span>خصم الكمية (10%)</span>
+                <span>-<span id="discount-val">0</span> ج.م</span>
+            </div>
+            <div class="price-row total">
+                <span>المبلغ النهائي</span>
+                <span id="total-price">0 ج.م</span>
+            </div>
+        </div>
+
+        <div id="discount-badge-container"></div>
+
+        <button class="submit-btn" onclick="submitOrder(event)">
+            <i class="fas fa-check-circle"></i>
+            إرسال الطلب
+        </button>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="order-confirmation-overlay" id="order-confirmation-overlay"></div>
+    <div class="order-confirmation-modal" id="order-confirmation-modal" style="display: none;">
+        <div class="success-animation">
+            <div class="success-circle">
+                <i class="fas fa-check success-checkmark"></i>
+            </div>
+        </div>
+
+        <h2 class="confirmation-title">تم استلام طلبك بنجاح! 🎉</h2>
+        <p class="confirmation-subtitle">
+            شكراً لك على ثقتك بنا. سنقوم بمعالجة طلبك في أقرب وقت وسنتواصل معك قريباً.
+        </p>
+
+        <div class="order-id-box">
+            <div class="order-id-label">رقم الطلب</div>
+            <div class="order-id-value" id="order-number">ORD-00000</div>
+        </div>
+
+        <div class="order-summary-box">
+            <div class="order-summary-title">
+                <i class="fas fa-receipt"></i>
+                ملخص الطلب
+            </div>
+
+            <div class="order-items-list" id="confirmation-items-list">
+                <!-- Items will be inserted here -->
+            </div>
+
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid var(--border-light);">
+                <div class="order-detail-row">
+                    <span class="order-detail-label">
+                        <i class="fas fa-user"></i>
+                        الاسم
+                    </span>
+                    <strong id="confirm-name">-</strong>
+                </div>
+                <div class="order-detail-row">
+                    <span class="order-detail-label">
+                        <i class="fas fa-phone"></i>
+                        الموبايل
+                    </span>
+                    <strong id="confirm-phone">-</strong>
+                </div>
+                <div class="order-detail-row">
+                    <span class="order-detail-label">
+                        <i class="fas fa-map-marker-alt"></i>
+                        العنوان
+                    </span>
+                    <strong id="confirm-address">-</strong>
+                </div>
+                <div class="order-detail-row">
+                    <span class="order-detail-label">
+                        <i class="fas fa-city"></i>
+                        المحافظة
+                    </span>
+                    <strong id="confirm-city">-</strong>
+                </div>
+            </div>
+
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid var(--border-light);">
+                <div class="order-detail-row">
+                    <span>الإجمالي</span>
+                    <strong id="confirm-subtotal">0 ج.م</strong>
+                </div>
+                <div class="order-detail-row" id="confirm-discount-row" style="display: none; color: var(--success);">
+                    <span>الخصم (10%)</span>
+                    <strong id="confirm-discount">0 ج.م</strong>
+                </div>
+                <div class="order-detail-row highlight">
+                    <span>المبلغ النهائي</span>
+                    <strong id="confirm-total">0 ج.م</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="confirmation-message">
+            <i class="fas fa-info-circle"></i>
+            سيتم التواصل معك خلال 24 ساعة لتأكيد الطلب وترتيب التوصيل
+        </div>
+
+        <div class="confirmation-actions">
+            <button class="confirmation-btn confirmation-btn-primary" onclick="closeConfirmation()">
+                <i class="fas fa-home"></i> العودة للرئيسية
+            </button>
+            <button class="confirmation-btn confirmation-btn-secondary" onclick="printOrder()">
+                <i class="fas fa-print"></i> طباعة
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- About Section -->
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-bolt"></i>
+                    الكترونيكس ستور
+                </div>
+                <p class="footer-description">
+                    متجرك الموثوق للإلكترونيات والتكنولوجيا. نوفر أحدث الأجهزة بأفضل الأسعار وأعلى جودة في مصر.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1ZbV7LGRku/" class="social-btn facebook" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/electronics_store_17?igsh=MWZyY2tnczRtdTB5eA==" class="social-btn instagram" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/201208888723" class="social-btn whatsapp" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@electronics_store_1?_r=1&_t=ZS-94FaKFxqbPl" class="social-btn tiktok" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3>
+                    <i class="fas fa-phone-alt"></i>
+                    تواصل معنا
+                </h3>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+201208888723">+20 1208888723</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>القاهرة، مصر</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>السبت - الخميس: 9ص - 10م</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 الكترونيكس ستور. جميع الحقوق محفوظة</p>
+            
+            <div class="payment-methods">
+                <span style="margin-left: 10px; color: rgba(255,255,255,0.7);">طرق الدفع:</span>
+                <div class="payment-icon" title="InstaPay">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="payment-icon" title="محفظة إلكترونية">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="payment-icon" title="كاش">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+       
+
+        // قاعدة بيانات المنتجات
+        const allProducts = [
+            { id: 200, name: "White Power Bank(20000)", price: 850, category: "Power Banks", img: "images2/bower.jpg.jpg", rating: 5 },       
+            { id: 201, name: "Black Power Bank(20000)", price: 850, category: "Power Banks", img: "images2/bower2.jpg.jpg", rating: 5 },       
+            { id: 1, name: "اباجورة كريستال", price: 178, category: "Light House", img: "images/1.jpg.jpg", rating: 5 },       
+            { id: 2, name: "اباجورة كريستال", price: 178, category: "Light House", img: "images/2.jpg.jpg", rating: 5 },
+            { id: 3, name: "اباجورة كريستال", price: 178, category: "Light House", img: "images/3.jpg.jpg", rating: 5 },
+            { id: 4, name: "اباجورة كريستال تفاحه", price: 178, category: "Light House", img: "images/4.jpg.jpg", rating: 5 },
+            { id: 5, name: "اباجورة كريستال نجمة مفرغة", price: 178, category: "Light House", img: "images/5.jpg.jpg", rating: 5 },
+            { id: 6, name: "اباجورة كريستال", price: 178, category: "Light House", img: "images/6.jpg.jpg", rating: 5 },
+            { id: 7, name: "اباجورة كريستال نجمة منفوخه", price: 178, category: "Light House", img: "images/7.jpg.jpg", rating: 5 },
+            { id: 8, name: "اباجورة كريستال تاج", price: 178, category: "Light House", img: "images/8.jpg.jpg", rating: 5 },
+            { id: 9, name: "اباجورة قاعدة مكتب", price: 145, category: "Light House", img: "images/9.jpg.jpg", rating: 5 },
+            { id: 10, name: "اباجورة مكتب", price: 352, category: "Light House", img: "images/10.jpg.jpg", rating: 5 },
+            { id: 11, name: "لمبة شحن", price: 68.5, category: "Light House", img: "images/11.jpg.jpg", rating: 4 },
+            { id: 12, name: "لمبة شحن", price: 68.5, category: "Light House", img: "images/12.jpg.jpg", rating: 4 },
+            { id: 13, name: "لمبة شحن", price: 68.5, category: "Light House", img: "images/13.jpg.jpg", rating: 4 },
+            { id: 14, name: "اباجورة مكتب", price: 280, category: "Light House", img: "images/14.jpg.jpg", rating: 5 },
+            { id: 15, name: "اباجورة مكتب", price: 352, category: "Light House", img: "images/15.jpg.jpg", rating: 5 },
+            { id: 16, name: "اباجورة مكتب", price: 170, category: "Light House", img: "images/16.jpg.jpg", rating: 4 },
+            { id: 17, name: "اباجورة مكتب", price: 145, category: "Light House", img: "images/17.jpg.jpg", rating: 4 },
+            { id: 18, name: "اباجورة مكتب", price: 165, category: "Light House", img: "images/18.jpg.jpg", rating: 4 },
+            { id: 19, name: "اباجورة مروحه مكتب", price: 475, category: "Light House", img: "images/19.jpg.jpg", rating: 5 },
+            { id: 20, name: "اباجورة مكتب", price: 235, category: "Light House", img: "images/20.jpg.jpg", rating: 4 },
+            { id: 21, name: "اباجورة وساعه", price: 300, category: "Light House", img: "images/21.jpg.jpg", rating: 5 },
+            { id: 22, name: "اباجورة مكتب", price: 235, category: "Light House", img: "images/22.jpg.jpg", rating: 4 },
+            { id: 23, name: "اباجورة مكتب", price: 235, category: "Light House", img: "images/23.jpg.jpg", rating: 4 },
+            { id: 24, name: "اباجورة وساعه", price: 432, category: "Light House", img: "images/24.jpg.jpg", rating: 5 },
+            { id: 26, name: "شريط ليد بكرة", price: 352, category: "Light House", img: "images/26.jpg.jpg", rating: 5 },
+            { id: 27, name: "اباجورة", price: 345, category: "Light House", img: "images/27.jpg.jpg", rating: 4 },
+            { id: 28, name: "كشاف راس سينسور", price: 145, category: "flashlights", img: "images/28.jpg.jpg", rating: 5 },
+            { id: 29, name: "كشاف راس", price: 92, category: "flashlights", img: "images/29.jpg.jpg", rating: 4 },
+            { id: 30, name: "كشاف حدائق", price: 535, category: "flashlights", img: "images/30.jpg.jpg", rating: 5 },
+            { id: 31, name: "كشاف كلوب", price: 330, category: "flashlights", img: "images/31.jpg.jpg", rating: 5 },
+            { id: 33, name: "مسدس مساج 4*1", price: 535, category: "Body Care", img: "images/33.jpg.jpg", rating: 5 },
+            { id: 34, name: "مسدس مساج 8*1", price: 550, category: "Body Care", img: "images/34.jpg.jpg", rating: 5 },
+            { id: 35, name: "مسدس مساج 9*1", price: 535, category: "Body Care", img: "images/35.jpg.jpg", rating: 5 },
+            { id: 36, name: "مسدس مساج 4*1", price: 300, category: "Body Care", img: "images/36.jpg.jpg", rating: 4 },
+            { id: 37, name: "مسدس مساج 4*1", price: 330, category: "Body Care", img: "images/37.jpg.jpg", rating: 4 },
+            { id: 38, name: "مسدس مساج 4*1", price: 535, category: "Body Care", img: "images/38.jpg.jpg", rating: 5 },
+            { id: 39, name: "مسدس مساج ميني", price: 90, category: "Body Care", img: "images/39.jpg.jpg", rating: 4 },
+            { id: 40, name: "مسدس مساج 5*1", price: 533, category: "Body Care", img: "images/40.jpg.jpg", rating: 5 },
+            { id: 41, name: "جهاز مساج", price: 360, category: "Body Care", img: "images/41.jpg.jpg", rating: 5 },
+            { id: 42, name: "جهاز مساج للركبة", price: 520, category: "Body Care", img: "images/42.jpg.jpg", rating: 5 },
+            { id: 43, name: "جهاز مساج للوجه", price: 432, category: "Body Care", img: "images/43.jpg.jpg", rating: 5 },
+            { id: 44, name: "جهاز مساج للجسم", price: 1390, category: "Body Care", img: "images/44.jpg.jpg", rating: 5 },
+            { id: 46, name: "جهاز مساج للرأس", price: 605, category: "Body Care", img: "images/46.jpg.jpg", rating: 5 },
+            { id: 49, name: "مشط مساج للشعر", price: 925, category: "Body Care", img: "images/49.jpg.jpg", rating: 5 },
+            { id: 58, name: "بلاور لاسلكي", price: 460, category: "Tools", img: "images/58.jpg.jpg", rating: 5 },
+            { id: 59, name: "بلاور سلكي", price: 475, category: "Tools", img: "images/59.jpg.jpg", rating: 5 },
+            { id: 60, name: "حجر ازرق بدون كعب", price: 72.5, category: "Tools", img: "images/60.jpg.jpg", rating: 4 },
+            { id: 61, name: "حجر ليزر بدون كعب", price: 29, category: "Tools", img: "images/61.jpg.jpg", rating: 4 },
+            { id: 62, name: "حجر 26650", price: 99, category: "Tools", img: "images/62.jpg.jpg", rating: 4 },
+            { id: 63, name: "حجر قلم شحن", price: 30, category: "Tools", img: "images/63.jpg.jpg", rating: 4 },
+            { id: 64, name: "شاحن حجر JB-212", price: 250, category: "Tools", img: "images/64.jpg.jpg", rating: 5 },
+            { id: 65, name: "شاحن حجر ليزر", price: 37, category: "Tools", img: "images/65.jpg.jpg", rating: 4 },
+            { id: 66, name: "شاحن حجر JB-118", price: 145, category: "Tools", img: "images/66.jpg.jpg", rating: 4 },
+            { id: 67, name: "شاحن حجر JB-006", price: 170, category: "Tools", img: "images/67.jpg.jpg", rating: 4 },
+            { id: 68, name: "50G ازير", price: 45, category: "Tools", img: "images/68.jpg.jpg", rating: 4 },
+            { id: 69, name: "جوانتي عمال لوكس", price: 28, category: "Tools", img: "images/69.jpg.jpg", rating: 4 },
+            { id: 70, name: "طقم مفك شحن", price: 287, category: "Tools", img: "images/70.jpg.jpg", rating: 5 },
+            { id: 71, name: "ميزان مياة وليزر ومتر", price: 207, category: "Tools", img: "images/71.jpg.jpg", rating: 5 },
+            { id: 72, name: "3M متر", price: 33, category: "Tools", img: "images/72.jpg.jpg", rating: 4 },
+            { id: 73, name: "3M-16mm متر", price: 40, category: "Tools", img: "images/73.jpg.jpg", rating: 4 },
+            { id: 74, name: "افوميتر", price: 153, category: "Tools", img: "images/74.jpg.jpg", rating: 5 },
+            { id: 75, name: "قشارة سلك", price: 95, category: "Tools", img: "images/75.jpg.jpg", rating: 4 },
+            { id: 76, name: "طقم مفك شحن", price: 230, category: "Tools", img: "images/76.jpg.jpg", rating: 5 },
+            { id: 77, name: "طقم عدة 3*1", price: 193, category: "Tools", img: "images/77.jpg.jpg", rating: 4 },
+            { id: 78, name: "طقم مفك 16*1", price: 135, category: "Tools", img: "images/78.jpg.jpg", rating: 4 },
+            { id: 79, name: "طقم عدة 3*1", price: 87, category: "Tools", img: "images/79.jpg.jpg", rating: 4 },
+            { id: 80, name: "طقم مفك 19*1", price: 92, category: "Tools", img: "images/80.jpg.jpg", rating: 4 },
+            { id: 81, name: "طقم مفتاح (13+15+17)", price: 135, category: "Tools", img: "images/81.jpg.jpg", rating: 4 },
+            { id: 82, name: "طقم مفتاح 5 مقاسات", price: 150, category: "Tools", img: "images/82.jpg.jpg", rating: 4 },
+            { id: 83, name: "طقم مفتاح (8+10+12)", price: 87, category: "Tools", img: "images/83.jpg.jpg", rating: 4 },
+            { id: 84, name: "صاعق ناموس 20وات 40سم", price: 722, category: "Tools", img: "images/84.jpg.jpg", rating: 5 },
+            { id: 85, name: "مضرب ناموس", price: 206, category: "Tools", img: "images/85.jpg.jpg", rating: 4 },
+            { id: 86, name: "صاعق ناموس مروحة", price: 110, category: "Tools", img: "images/86.jpg.jpg", rating: 4 },
+            { id: 87, name: "مضرب ناموس 208", price: 206, category: "Tools", img: "images/87.jpg.jpg", rating: 4 },
+            { id: 90, name: "مكنه وبر VGR-818", price: 665, category: "VGR Section", img: "images/90.jpg.jpg", rating: 5 },
+            { id: 92, name: "مكواه VGR-599", price: 955, category: "VGR Section", img: "images/92.jpg.jpg", rating: 5 },
+            { id: 93, name: "مكواه VGR-596", price: 485, category: "VGR Section", img: "images/93.jpg.jpg", rating: 5 },
+            { id: 94, name: "مكواه VGR-581", price: 955, category: "VGR Section", img: "images/94.jpg.jpg", rating: 5 },
+            { id: 95, name: "مكواه VGR-590", price: 1025, category: "VGR Section", img: "images2/95.jpg.jpg", rating: 5 },
+            { id: 96, name: "طقم عدة 5*1", price: 142, category: "Tools", img: "images2/96.jpg.jpg", rating: 4 },
+            { id: 97, name: "طقم مفك 5*1", price: 135, category: "Tools", img: "images2/97.jpg.jpg", rating: 4 },
+            { id: 98, name: "طقم مفك ساعات 6ق", price: 25, category: "Tools", img: "images2/98.jpg.jpg", rating: 4 },
+            { id: 99, name: "طقم مفك gm-211", price: 87, category: "Tools", img: "images2/99.jpg.jpg", rating: 4 },
+            { id: 100, name: "حجر ازرق بكعب", price: 72.5, category: "Tools", img: "images2/100.jpg.jpg", rating: 4 },
+            { id: 101, name: "طقم مفك SW-6011A", price: 57, category: "Tools", img: "images2/101.jpg.jpg", rating: 4 },
+            { id: 102, name: "مكنه لحام اكياس 30سم", price: 548, category: "Tools", img: "images2/102.jpg.jpg", rating: 5 },
+            { id: 103, name: "مكواه لحام لمبة 660", price: 112, category: "Tools", img: "images2/103.jpg.jpg", rating: 4 },
+            { id: 104, name: "مكواه لحام 14*1", price: 193, category: "Tools", img: "images2/104.jpg.jpg", rating: 4 },
+            { id: 105, name: "مكواه لحام", price: 41, category: "Tools", img: "images2/105.jpg.jpg", rating: 4 },
+            { id: 106, name: "مضخة مياه شحن", price: 337, category: "Tools", img: "images2/106.jpg.jpg", rating: 5 },
+            { id: 107, name: "دابل فيس شفاف", price: 35, category: "Tools", img: "images2/107.jpg.jpg", rating: 4 },
+            { id: 110, name: "استيشوارVGR-427", price: 2910, category: "VGR Section", img: "images2/110.jpg.jpg", rating: 5 },
+            { id: 111, name: "فرشة 5*1", price: 3495, category: "VGR Section", img: "images2/111.jpg.jpg", rating: 5 },
+            { id: 112, name: "استيشوار VGR-401", price: 3277, category: "VGR Section", img: "images2/112.jpg.jpg", rating: 5 },
+            { id: 113, name: "استيشوار VGRR-452", price: 1030, category: "VGR Section", img: "images2/113.jpg.jpg", rating: 5 },
+            { id: 115, name: "فرشة 3*1", price: 2805, category: "VGR Section", img: "images2/115.jpg.jpg", rating: 5 },
+            { id: 116, name: "مكواه VGR-522", price: 812, category: "VGR Section", img: "images2/116.jpg.jpg", rating: 5 },
+            { id: 117, name: "مكواه VGR-550", price: 812, category: "VGR Section", img: "images2/117.jpg.jpg", rating: 5 },
+            { id: 118, name: "مكواه VGR-533", price: 812, category: "VGR Section", img: "images2/118.jpg.jpg", rating: 5 },
+            { id: 119, name: "مكواه VGR-558", price: 885, category: "VGR Section", img: "images2/119.jpg.jpg", rating: 5 },
+            { id: 120, name: "مكواه VGR-556", price: 921, category: "VGR Section", img: "images2/120.jpg.jpg", rating: 5 },
+            { id: 121, name: "مكواه VGR-565", price: 465, category: "VGR Section", img: "images2/121.jpg.jpg", rating: 4 },
+            { id: 122, name: "مكنه حيوانات V-225", price: 1140, category: "VGR Section", img: "images2/122.jpg.jpg", rating: 5 },
+            { id: 123, name: "مكواه VGR-515", price: 667, category: "VGR Section", img: "images2/123.jpg.jpg", rating: 5 },
+            { id: 124, name: "مكنة حيوانات V-240", price: 995, category: "VGR Section", img: "images2/124.jpg.jpg", rating: 5 },
+            { id: 125, name: "مكنة حيوانات V-216", price: 1285, category: "VGR Section", img: "images2/125.jpg.jpg", rating: 5 },
+            { id: 126, name: "مكنه حيوانات V-217", price: 4510, category: "VGR Section", img: "images2/126.jpg.jpg", rating: 5 },
+            { id: 127, name: "مكنه حيوانات V-219", price: 1247, category: "VGR Section", img: "images2/127.jpg.jpg", rating: 5 },
+            { id: 128, name: "مكنه حيوانات V-204", price: 1247, category: "VGR Section", img: "images2/128.jpg.jpg", rating: 5 },
+            { id: 129, name: "مكنه حيوانات V-201", price: 1356, category: "VGR Section", img: "images2/129.jpg.jpg", rating: 5 },
+            { id: 130, name: "طقم مكنه V-900+600", price: 1430, category: "VGR Section", img: "images2/130.jpg.jpg", rating: 5 },
+            { id: 131, name: "طقم مكنه V-977+377", price: 3640, category: "VGR Section", img: "images2/131.jpg.jpg", rating: 5 },
+            { id: 132, name: "طقم مكنه(BLACK) V-699+971", price: 1355, category: "VGR Section", img: "images2/132.jpg.jpg", rating: 5 },
+            { id: 133, name: "طقم مكنه(GOLD) V-270+992", price: 4582, category: "VGR Section", img: "images2/133.jpg.jpg", rating: 5 },
+            { id: 134, name: "مكنه V-001_977", price: 5020, category: "VGR Section", img: "images2/134.jpg.jpg", rating: 5 },
+            { id: 135, name: "مكنه V-999", price: 406, category: "VGR Section", img: "images2/135.jpg.jpg", rating: 4 },
+            { id: 136, name: "مكنه V-998", price: 595, category: "VGR Section", img: "images2/136.jpg.jpg", rating: 5 },
+            { id: 137, name: "مكنه V-992", price: 2117, category: "VGR Section", img: "images2/137.jpg.jpg", rating: 5 },
+            { id: 138, name: "مكواه VGR-551", price: 812, category: "VGR Section", img: "images2/138.jpg.jpg", rating: 5 },
+            { id: 139, name: "مكنه تنعيم V-377", price: 1720, category: "VGR Section", img: "images2/139.jpg.jpg", rating: 5 },
+            { id: 140, name: "مكنه تنعيم V-370", price: 705, category: "VGR Section", img: "images2/140.jpg.jpg", rating: 5 },
+            { id: 141, name: "مكنه تنعيم V-366", price: 551, category: "VGR Section", img: "images2/141.jpg.jpg", rating: 5 },
+            { id: 143, name: "مكنه تنعيم V-391", price: 1175, category: "VGR Section", img: "images2/143.jpg.jpg", rating: 5 },
+            { id: 144, name: "مكنه تنعيم V-377 BLUE", price: 1791, category: "VGR Section", img: "images2/144.jpg.jpg", rating: 5 },
+            { id: 145, name: "مكنه انف 4*1", price: 610, category: "VGR Section", img: "images2/145.jpg.jpg", rating: 5 },
+            { id: 146, name: "مكنه تنعيم V-922", price: 580, category: "VGR Section", img: "images2/146.jpg.jpg", rating: 5 },
+            { id: 147, name: "مكنه تنعيم V-398", price: 1392, category: "VGR Section", img: "images2/147.jpg.jpg", rating: 5 },
+            { id: 150, name: "مكنه V-642 ", price: 3277, category: "VGR Section", img: "images2/150.jpg.jpg", rating: 5 },
+            { id: 151, name: "مكنه V-987", price: 667, category: "VGR Section", img: "images2/151.jpg.jpg", rating: 5 },
+            { id: 153, name: "مكنه V-962", price: 638, category: "VGR Section", img: "images2/153.jpg.jpg", rating: 5 },
+            { id: 154, name: "مكنه V-966", price: 537, category: "VGR Section", img: "images2/154.jpg.jpg", rating: 5 },
+            { id: 155, name: "مكنه V-946", price: 2235, category: "VGR Section", img: "images2/155.jpg.jpg", rating: 5 },
+            { id: 156, name: "مكنه V-916", price: 551, category: "VGR Section", img: "images2/156.jpg.jpg", rating: 5 },
+            { id: 157, name: "مكنه V-942", price: 885, category: "VGR Section", img: "images2/157.jpg.jpg", rating: 5 },
+            { id: 158, name: "مكنه V-934", price: 560, category: "VGR Section", img: "images2/158.jpg.jpg", rating: 5 },
+            { id: 159, name: "مكنه V-906", price: 1356, category: "VGR Section", img: "images2/159.jpg.jpg", rating: 5 },
+            { id: 160, name: "مكنه V-901", price: 921, category: "VGR Section", img: "images2/160.jpg.jpg", rating: 5 },
+            { id: 161, name: "مكنه V-886T", price: 1140, category: "VGR Section", img: "images2/161.jpg.jpg", rating: 5 },
+            { id: 162, name: "مكنه V-886C", price: 1900, category: "VGR Section", img: "images2/162.jpg.jpg", rating: 5 },
+            { id: 163, name: "مكنه V-659", price: 921, category: "VGR Section", img: "images2/163.jpg.jpg", rating: 5 },
+            { id: 164, name: "مكنه V-694", price: 3277, category: "VGR Section", img: "images2/164.jpg.jpg", rating: 5 }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('techStoreCart')) || [];
+        let currentCategory = 'all';
+
+        // Display Products
+        function displayProducts() {
+            const container = document.getElementById('products-container');
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            
+            const filtered = allProducts.filter(p => {
+                return (currentCategory === 'all' || p.category === currentCategory) 
+                    && p.name.toLowerCase().includes(search);
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+                        <i class="fas fa-search" style="font-size: 4rem; color: var(--text-tertiary); opacity: 0.5; margin-bottom: 20px;"></i>
+                        <p style="font-size: 1.3rem; color: var(--text-secondary);">لم يتم العثور على منتجات</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(p => {
+                const stars = '★'.repeat(p.rating) + '☆'.repeat(5 - p.rating);
+
+                return `
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="${p.img}" alt="${p.name}" class="product-image">
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-category">${p.category}</div>
+                            <h3 class="product-name">${p.name}</h3>
+                            
+                            <div class="product-rating">
+                                ${stars.split('').map(s => `<span class="star ${s === '☆' ? 'empty' : ''}">${s}</span>`).join('')}
+                            </div>
+
+                            <div class="product-price-section">
+                                <div>
+                                    <span class="price">${p.price.toLocaleString()}</span>
+                                    <span class="price-suffix">ج.م</span>
+                                </div>
+                            </div>
+
+                            <div class="qty-controls">
+                                <button class="qty-btn" onclick="changeInputQty(${p.id}, -1)">-</button>
+                                <input type="number" id="qty-in-${p.id}" class="qty-input" value="1" min="1" readonly>
+                                <button class="qty-btn" onclick="changeInputQty(${p.id}, 1)">+</button>
+                            </div>
+
+                            <button class="add-to-cart-btn" onclick="addToCart(${p.id})">
+                                <i class="fas fa-cart-plus"></i> إضافة للسلة
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Quantity Controls
+        function changeInputQty(id, delta) {
+            const input = document.getElementById(`qty-in-${id}`);
+            let val = parseInt(input.value) + delta;
+            if (val >= 1) input.value = val;
+        }
+
+        // Add to Cart
+        function addToCart(id) {
+            const qty = parseInt(document.getElementById(`qty-in-${id}`).value);
+            const product = allProducts.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+
+            if (existing) {
+                existing.quantity += qty;
+            } else {
+                cart.push({ ...product, quantity: qty });
+            }
+
+            localStorage.setItem('techStoreCart', JSON.stringify(cart));
+            updateCartUI();
+            showToast(`تمت إضافة ${product.name} إلى السلة`);
+            document.getElementById(`qty-in-${id}`).value = 1;
+        }
+
+        // Update Cart UI
+        function updateCartUI() {
+            const list = document.getElementById('cart-items-list');
+            const floatingCart = document.getElementById('floating-cart');
+            let subtotal = 0;
+            let totalQty = 0;
+
+            if (cart.length === 0) {
+                list.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart empty-cart-icon"></i>
+                        <p class="empty-cart-text">السلة فارغة</p>
+                    </div>
+                `;
+                floatingCart.style.display = 'none';
+                document.getElementById('cart-count').innerText = '0';
+                document.getElementById('subtotal').innerText = '0';
+                document.getElementById('total-price').innerText = '0';
+                document.getElementById('floating-total').innerText = '0 ج.م';
+                return;
+            }
+
+            list.innerHTML = cart.map((item, index) => {
+                subtotal += item.price * item.quantity;
+                totalQty += item.quantity;
+                return `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${(item.price * item.quantity).toLocaleString()} ج.م (×${item.quantity})</div>
+                        </div>
+                        <i class="fas fa-trash cart-item-remove" onclick="removeItem(${index})"></i>
+                    </div>
+                `;
+            }).join('');
+
+            let discount = (totalQty > 3) ? subtotal * 0.10 : 0;
+            const finalTotal = subtotal - discount;
+
+            document.getElementById('discount-row').style.display = discount > 0 ? 'flex' : 'none';
+            document.getElementById('cart-count').innerText = totalQty;
+            document.getElementById('subtotal').innerText = subtotal.toLocaleString();
+            document.getElementById('discount-val').innerText = discount.toLocaleString();
+            document.getElementById('total-price').innerText = finalTotal.toLocaleString();
+            document.getElementById('floating-total').innerText = finalTotal.toLocaleString() + ' ج.م';
+
+            // Discount Badge
+            const badgeContainer = document.getElementById('discount-badge-container');
+            if (discount > 0) {
+                badgeContainer.innerHTML = '<div class="discount-badge"><i class="fas fa-gift"></i> تم تطبيق خصم 10% لشرائك أكثر من 3 منتجات!</div>';
+            } else {
+                badgeContainer.innerHTML = '';
+            }
+
+            floatingCart.style.display = 'flex';
+        }
+
+        // Remove Item
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('techStoreCart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        // Category Filter
+        function setCategory(cat, btn) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            displayProducts();
+        }
+
+        // Search Filter
+        function filterProducts() {
+            displayProducts();
+        }
+
+        // Toggle Cart Modal
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            const overlay = document.getElementById('modal-overlay');
+            
+            if (modal.style.display === 'none' || modal.style.display === '') {
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.style.display = 'none';
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Submit Order to Google Sheets
+        async function submitOrder(event) {
+            const name = document.getElementById('cName').value.trim();
+            const phone = document.getElementById('cPhone').value.trim();
+            const address = document.getElementById('cAddress').value.trim();
+            const city = document.getElementById('cCity').value;
+
+            if (!name || !phone || !address || !city) {
+                alert("⚠️ يرجى ملء جميع البيانات المطلوبة");
+                return;
+            }
+
+            if (cart.length === 0) {
+                alert("⚠️ السلة فارغة!");
+                return;
+            }
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const discount = totalQty > 3 ? subtotal * 0.10 : 0;
+            const finalTotal = subtotal - discount;
+
+            // Products list for sheet
+            const productsText = cart.map((item, i) => 
+                `${i + 1}. ${item.name} (×${item.quantity}) - ${(item.price * item.quantity).toLocaleString()} ج.م`
+            ).join(' | ');
+
+            // ⚠️ ضع رابط Google Apps Script هنا ⚠️
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz5YUziBvEBNdMNFcDQrfn4Cu-um-Z4iAdZgPaeS4Y_eC_5oPRCSg6kXA9HCJloW734/exec';
+            
+            if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+                alert('⚠️ من فضلك قم بإعداد Google Sheets أولاً!');
+                return;
+            }
+
+            // Generate Order Number FIRST
+            const orderNumber = 'ORD-' + Date.now().toString().slice(-6);
+
+            // Show loading
+            const submitBtn = event ? event.target : document.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الحفظ...';
+            submitBtn.disabled = true;
+
+            try {
+                // Save to Google Sheets with order number
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        orderNumber: orderNumber,
+                        name: name,
+                        phone: phone,
+                        address: address,
+                        city: city,
+                        products: productsText,
+                        subtotal: subtotal,
+                        discount: discount,
+                        total: finalTotal
+                    })
+                });
+                
+                // Show confirmation modal
+                showOrderConfirmation({
+                    orderNumber: orderNumber,
+                    name: name,
+                    phone: phone,
+                    address: address,
+                    city: city,
+                    items: cart,
+                    subtotal: subtotal,
+                    discount: discount,
+                    total: finalTotal
+                });
+                
+                // Clear cart and form
+                cart = [];
+                localStorage.removeItem('techStoreCart');
+                updateCartUI();
+                toggleCart();
+                
+                // Reset form
+                document.getElementById('cName').value = '';
+                document.getElementById('cPhone').value = '';
+                document.getElementById('cAddress').value = '';
+                document.getElementById('cCity').value = '';
+                
+            } catch (error) {
+                console.error('❌ خطأ في حفظ البيانات:', error);
+                alert('❌ حدث خطأ في حفظ الطلب. حاول مرة أخرى.');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        // Show Order Confirmation Modal
+        function showOrderConfirmation(orderData) {
+            // Fill order details
+            document.getElementById('order-number').textContent = orderData.orderNumber;
+            document.getElementById('confirm-name').textContent = orderData.name;
+            document.getElementById('confirm-phone').textContent = orderData.phone;
+            document.getElementById('confirm-address').textContent = orderData.address;
+            document.getElementById('confirm-city').textContent = orderData.city;
+            document.getElementById('confirm-subtotal').textContent = orderData.subtotal.toLocaleString() + ' ج.م';
+            document.getElementById('confirm-total').textContent = orderData.total.toLocaleString() + ' ج.م';
+
+            // Show/hide discount
+            if (orderData.discount > 0) {
+                document.getElementById('confirm-discount-row').style.display = 'flex';
+                document.getElementById('confirm-discount').textContent = '-' + orderData.discount.toLocaleString() + ' ج.م';
+            } else {
+                document.getElementById('confirm-discount-row').style.display = 'none';
+            }
+
+            // Fill items list
+            const itemsList = document.getElementById('confirmation-items-list');
+            itemsList.innerHTML = orderData.items.map(item => `
+                <div class="order-item-mini">
+                    <img src="${item.img}" alt="${item.name}" class="order-item-mini-image">
+                    <div class="order-item-mini-details">
+                        <div class="order-item-mini-name">${item.name}</div>
+                        <div class="order-item-mini-qty">الكمية: ${item.quantity} × ${item.price.toLocaleString()} ج.م</div>
+                    </div>
+                    <strong style="color: var(--primary);">${(item.price * item.quantity).toLocaleString()} ج.م</strong>
+                </div>
+            `).join('');
+
+            // Show modal
+            document.getElementById('order-confirmation-overlay').style.display = 'block';
+            document.getElementById('order-confirmation-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Confirmation Modal
+        function closeConfirmation() {
+            document.getElementById('order-confirmation-overlay').style.display = 'none';
+            document.getElementById('order-confirmation-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            location.reload();
+        }
+
+        // Print Order
+        function printOrder() {
+            window.print();
+        }
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Initialize
+        displayProducts();
+        updateCartUI();
+    </script>
+
+</body>
+</html>
